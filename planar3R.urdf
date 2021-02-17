@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+
+<robot name="ThreeLinkPlanar">
+  <link name="base_link">
+    <visual>
+      <geometry> <box size="0.4 0.2 0.6" />  </geometry>
+      <material name="green"><color rgba="0 1 0 1" />  </material>
+    </visual>
+  </link>
+
+  <link name="upper_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia ixx="1" ixy="0" ixz="0" iyy="0.083" iyz="0" izz="1" />
+    </inertial>
+    <visual>
+         <origin xyz="0.5 0 0"/>
+         <geometry> <box size="1.0 0.05 0.05" /></geometry>
+         <material name="red">  <color rgba="1 0 0 1" /></material>
+    </visual>
+  </link>
+  <joint name="shoulder" type="continuous">
+    <parent link="base_link" />
+    <child link="upper_link" />
+    <origin xyz="0 0 0.3" rpy = "0 0 0"/>
+    <axis xyz="0 0 1" />
+    <dynamics damping="0.1" />
+  </joint>
+
+  <link name="lower_link">
+    <inertial>
+      <origin xyz="0.5 0 0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia ixx="1" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="1" />
+    </inertial>
+    <visual>
+      <origin xyz="0.5 0 0 "/>
+      <geometry>  <box size="1.0 0.05 0.05" /> </geometry>
+      <material name="blue"> <color rgba="0 0 1 1" /> </material>
+    </visual>
+  </link>
+
+  <joint name="elbow" type="continuous">
+    <parent link="upper_link" />
+    <child link="lower_link" />
+    <origin xyz="1.0 0.0 0" rpy="0.0 0 0 "/>
+    <axis xyz="0 0 1" />
+    <dynamics damping="0.1" />
+  </joint>
+
+  <link name="lowest_link">
+    <inertial>
+      <origin xyz="0.5 0 0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia ixx="1" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="1" />
+    </inertial>
+    <visual>
+      <origin xyz="0.5 0 0 "/>
+      <geometry>  <box size="1.05 0.05 0.05" /> </geometry>
+      <material name="green"> <color rgba="0 1 0 1" /> </material>
+    </visual>
+  </link>
+
+  <joint name="wrist" type="continuous">
+    <parent link="lower_link" />
+    <child link="lowest_link" />
+    <origin xyz="1.0 0.0 0" rpy="0.0 0 0 "/>
+    <axis xyz="0 0 1" />
+    <dynamics damping="0.1" />
+  </joint>
+
+  <link name="endeffector">
+    <inertial>
+      <origin xyz="0.0 0 0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia ixx="1" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="1" />
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0 0 "/>
+      <geometry>  <box size="0.05 0.05 0.05" /> </geometry>
+      <material name="red"> <color rgba="1 0 0 1" /> </material>
+    </visual>
+  </link>
+
+  <joint name="endjoint" type="fixed">
+    <parent link="lowest_link" />
+    <child link="endeffector" />
+    <origin xyz="1.0 0.0 0" rpy="0.0 0 0 "/>
+  </joint>
+
+</robot>
