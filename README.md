@@ -13,9 +13,13 @@ for inverse kinematic use
 
 `include("test_new.jl")` 
 
+The ball showed the former position of the endeffector in the vis.
+
 
 in order to update the endeffector point 	
 
+
 `update_desired(state,vis,point,body,x1,x2,x3)` 
 
-The ball showed the former position of the endeffector in the vis.
+and the robot will move to that new desired point.
+
