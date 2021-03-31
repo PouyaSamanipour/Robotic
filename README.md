@@ -13,4 +13,4 @@ In the second part, you need to run `Controller(1)` for the PD controller.
 In the last part, you need to run `Controller(2)` for the CTC controller.
 
 
-The results shows that we need a high derivative and proprtional gain for PD controller to have the error less than the specified value. However, for the CTC the small derivative and proportional gain will provide a satisfactory result.
+The results show that we need a high derivative and proprtional gain for PD controller to have the error less than the specified value. However, for the CTC the small derivative and proportional gain will provide a satisfactory result.
