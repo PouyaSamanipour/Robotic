@@ -54,17 +54,7 @@ function PDcontrol!(τ, t, state)
     τ .= map( x -> x > act_sat ? act_sat : x,τ)
     τ .= map( x -> x < -act_sat ? -act_sat : x,τ)
 end
-####################################################################
-function plot_sol(p,sol,colorarg,saveflag,savename)
-    qsol = vcat(sol[:]'...)
-    for i=1:7
-        push!(p,layer(x=sol.t,y=qsol[:,i],Geom.line,color=colorarg))
-    end
-    p
-    if saveflag
-        p |> PDF(savename)
-    end
-end
+
 ##############################
 function Control_CTC!(τ, t, state)
     T=10
